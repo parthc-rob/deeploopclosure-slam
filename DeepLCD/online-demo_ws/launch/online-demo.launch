@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+   
+    <node pkg="deeplcd" type="online-demo" name="deeplcd" output="screen" cwd="node">
+        <param name="net_def" type="string" value="$(find deeplcd)/../devel/calc_model/deploy.prototxt" />
+        <param name="weights" type="string" value="$(find deeplcd)/../devel/calc_model/calc.caffemodel" />
+        <param name="gpu" type="int" value="-1" />
+        <param name="min_loop_hyp_cnt" type="int" value="3" />
+        <param name="n_exclude" type="int" value="77" />
+        <param name="base_thresh" type="double" value="0.9" /> <!-- a priori threshold from GP -->
+	<!-- If true, it parses a TransformStamped topic, otherwise just a PointStampeds topic. Both go into the odometry displayed in rviz -->
+        <param name="full_transform" type="bool" value="1" />
+        <param name="pos_topic" type="string" value="/kitti/transformStamped" />
+        <param name="im_topic" type="string" value="/kitti/camera_gray_left/image_rect" />
+	
+    </node>
+
+    <!-- dummy frame -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="frame_0" args="0.0 0.0 0.0 0 0 0 1 world camera_left" />-->
+
+    <!-- Visualization -->
+    <node pkg="rviz" type="rviz" name="rviz_deeplcd" args="-d $(find deeplcd)/../launch/rviz.rviz" /> 
+
+</launch>
