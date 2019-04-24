@@ -16,6 +16,8 @@ Note that if your caffe is not installed in ~/caffe, you must use
 ## Data
 
 We use the kitti2bag tool to convert KITTI sequence to a rosbag.`<https://github.com/tomas789/kitti2bag>`
+We have provided this link to the rosbag of KITTI sequence 00 
+https://drive.google.com/open?id=1A7SKvnj0ddVGfHPl7pDv2iehk8fjkq7o 
 
 ## Run
 
